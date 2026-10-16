@@ -1,663 +1,275 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar" dir="rtl">
 <head>
-
-<style>
-/* تجميع وتحديد موقع الأيقونة العائمة في الأعلى والمنتصف */
-.top-floating-logo-container {
-    position: fixed;
-    top: 15px;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 9999;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-/* التنسيق الدائري مع التأثير الذهبي والتنفس */
-.top-floating-logo-link {
-    width: 70px;
-    height: 70px;
-    border-radius: 50%;
-    display: block;
-    padding: 3px;
-    background: linear-gradient(135deg, #F59E0B, #34D399);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5), 0 0 15px rgba(52, 211, 153, 0.4);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    animation: topLogoPulse 2.5s infinite alternate ease-in-out;
-}
-
-.top-floating-logo-link:hover {
-    transform: scale(1.1);
-    box-shadow: 0 12px 25px rgba(245, 158, 11, 0.6), 0 0 20px rgba(52, 211, 153, 0.7);
-}
-
-/* شكل الصورة الدائرية وتوافقها داخلياً */
-.top-floating-logo-img {
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
-    object-fit: cover;
-    background-color: #0B1120;
-    display: block;
-}
-
-/* حركة النبض الناعمة لجلب انتباه الزائر */
-@keyframes topLogoPulse {
-    0% {
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4), 0 0 10px rgba(52, 211, 153, 0.3);
-    }
-    100% {
-        box-shadow: 0 8px 25px rgba(245, 158, 11, 0.5), 0 0 20px rgba(52, 211, 153, 0.6);
-    }
-}
-</style>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VitalEdit | Premium Health & Self-Improvement Selection</title>
-    
-    <!-- Google Fonts & FontAwesome -->
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <title>توفيق الجويحي | الصفحة الشخصية والخدمات</title>
+    <!-- Font Awesome للأيقونات -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
     <style>
         :root {
-            --bg-main: #0B1120;
-            --bg-card: #151F32;
-            --emerald-accent: #34D399;
-            --emerald-glow: rgba(52, 211, 153, 0.35);
-            --gold-primary: #F59E0B;
-            --gold-glow: rgba(245, 158, 11, 0.45);
-            --text-white: #FFFFFF;
-            --text-muted: #94A3B8;
+            --gold: #d4af37;
+            --gold-glow: rgba(212, 175, 55, 0.6);
+            --bg-dark: #0f172a;
+            --card-bg: #1e293b;
+            --text-light: #f8fafc;
+            --text-muted: #94a3b8;
         }
 
         * {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            scroll-behavior: smooth;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
         body {
-            background-color: var(--bg-main);
-            color: var(--text-white);
+            background-color: var(--bg-dark);
+            color: var(--text-light);
             display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding-bottom: 60px;
-            overflow-x: hidden;
-            position: relative;
-        }
-
-        /* Dynamic Animated Background */
-        .animated-bg {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            z-index: -1;
-            overflow: hidden;
-            background: radial-gradient(circle at 50% 50%, #0f172a 0%, #0b1120 100%);
-        }
-
-        .orb {
-            position: absolute;
-            border-radius: 50%;
-            filter: blur(80px);
-            opacity: 0.25;
-            animation: floatOrb 12s infinite alternate ease-in-out;
-        }
-
-        .orb-1 {
-            width: 400px;
-            height: 400px;
-            background: var(--emerald-accent);
-            top: -100px;
-            left: -100px;
-        }
-
-        .orb-2 {
-            width: 500px;
-            height: 500px;
-            background: var(--gold-primary);
-            bottom: -150px;
-            right: -150px;
-            animation-delay: -6s;
-        }
-
-        .orb-3 {
-            width: 300px;
-            height: 300px;
-            background: #3B82F6;
-            top: 40%;
-            left: 40%;
-            animation-delay: -3s;
-            opacity: 0.15;
-        }
-
-        @keyframes floatOrb {
-            0% { transform: translate(0, 0) scale(1); }
-            100% { transform: translate(60px, 80px) scale(1.2); }
-        }
-
-        /* Header Section */
-        header {
-            width: 100%;
-            max-width: 1100px;
-            padding: 25px 20px 15px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-        }
-
-        .logo-box {
-            width: 160px;
-            filter: drop-shadow(0px 8px 25px var(--emerald-glow));
-            transition: transform 0.3s ease;
-        }
-
-        .logo-box:hover {
-            transform: scale(1.04);
-        }
-
-        .trust-banner {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background: rgba(245, 158, 11, 0.12);
-            border: 1px solid rgba(245, 158, 11, 0.35);
-            padding: 6px 18px;
-            border-radius: 20px;
-            font-size: 13px;
-            color: var(--gold-primary);
-            margin-top: 15px;
-            font-weight: 600;
-            backdrop-filter: blur(5px);
-        }
-
-        .section-title {
-            font-size: 28px;
-            font-weight: 800;
-            margin: 30px 20px 10px;
-            text-align: center;
-            background: linear-gradient(135deg, #FFF 30%, var(--emerald-accent) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .section-subtitle {
-            font-size: 14px;
-            color: var(--text-muted);
-            margin-bottom: 35px;
-            text-align: center;
-            padding: 0 15px;
-        }
-
-        /* Products Grid */
-        .products-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 25px;
-            width: 100%;
-            max-width: 1100px;
-            padding: 0 20px;
-        }
-
-        @media (max-width: 900px) {
-            .products-grid { grid-template-columns: repeat(2, 1fr); }
-        }
-
-        @media (max-width: 600px) {
-            .products-grid { grid-template-columns: 1fr; }
-        }
-
-        /* Product Card Styling */
-        .product-card {
-            background-color: rgba(21, 31, 50, 0.85);
-            border-radius: 24px;
-            padding: 25px 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            position: relative;
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            backdrop-filter: blur(10px);
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
-            margin-top: 10px;
-        }
-
-        .product-card:hover {
-            transform: translateY(-8px);
-            border-color: var(--gold-primary);
-            box-shadow: 0 20px 45px var(--gold-glow);
-        }
-
-        /* Hexagram Price Tag Badge */
-        .price-star {
-            position: absolute;
-            top: -12px;
-            left: 15px;
-            width: 65px;
-            height: 70px;
-            background: linear-gradient(135deg, #F59E0B 0%, #B45309 100%);
-            clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
-            display: flex;
-            flex-direction: column;
             justify-content: center;
             align-items: center;
-            box-shadow: 0 8px 15px rgba(245, 158, 11, 0.4);
-            z-index: 10;
-            transition: transform 0.3s ease;
+            min-height: 100vh;
+            padding: 20px;
         }
 
-        .product-card:hover .price-star {
-            transform: scale(1.1) rotate(-5deg);
+        .container {
+            width: 100%;
+            max-width: 480px;
+            background: var(--card-bg);
+            border-radius: 24px;
+            padding: 30px 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+            text-align: center;
+            border: 1px solid rgba(212, 175, 55, 0.2);
         }
 
-        .old-price {
-            font-size: 11px;
-            color: #FCA5A5;
-            text-decoration: line-through;
-            font-weight: 600;
-            line-height: 1;
-            margin-bottom: 2px;
-        }
-
-        .new-price {
-            font-size: 15px;
-            color: #FFFFFF;
-            font-weight: 800;
-            line-height: 1;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
-        }
-
-        .badge {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            background: linear-gradient(135deg, #F59E0B, #D97706);
-            color: #000;
-            font-size: 11px;
-            font-weight: 800;
-            padding: 4px 10px;
-            border-radius: 12px;
-            text-transform: uppercase;
-            box-shadow: 0 2px 10px rgba(245, 158, 11, 0.5);
-        }
-
-        /* Circular Frame */
-        .img-container {
+        /* التصميم الداخلي والصورة بالقطر والنسبة الذهبية */
+        .profile-wrapper {
+            position: relative;
             width: 140px;
             height: 140px;
-            border-radius: 50%;
-            position: relative;
-            margin: 15px 0 20px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background: radial-gradient(circle, rgba(245,158,11,0.15) 0%, rgba(0,0,0,0) 70%);
+            margin: 0 auto 20px auto;
         }
 
-        .img-container::before {
-            content: '';
-            position: absolute;
-            inset: -4px;
-            border-radius: 50%;
-            padding: 3px;
-            background: linear-gradient(135deg, var(--gold-primary), transparent, var(--emerald-accent));
-            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-            -webkit-mask-composite: xor;
-            mask-composite: exclude;
-            animation: rotateGlow 6s linear infinite;
-        }
-
-        @keyframes rotateGlow {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        .product-img {
-            width: 105px;
-            height: 105px;
+        .profile-img {
+            width: 100%;
+            height: 100%;
             border-radius: 50%;
             object-fit: cover;
-            border: 2px solid rgba(255, 255, 255, 0.15);
+            position: relative;
+            z-index: 2;
+            border: 2px solid var(--gold);
         }
 
-        .product-title {
-            font-size: 18px;
-            font-weight: 700;
+        /* الدائرة الذهبية المتوهجة */
+        .glow-circle {
+            position: absolute;
+            top: -6px;
+            left: -6px;
+            right: -6px;
+            bottom: -6px;
+            border-radius: 50%;
+            border: 2px solid var(--gold);
+            box-shadow: 0 0 15px var(--gold-glow), inset 0 0 15px var(--gold-glow);
+            animation: pulse-glow 2.5s infinite ease-in-out;
+            z-index: 1;
+        }
+
+        @keyframes pulse-glow {
+            0% {
+                transform: scale(0.98);
+                box-shadow: 0 0 10px var(--gold-glow);
+            }
+            50% {
+                transform: scale(1.03);
+                box-shadow: 0 0 25px var(--gold), 0 0 35px var(--gold-glow);
+            }
+            100% {
+                transform: scale(0.98);
+                box-shadow: 0 0 10px var(--gold-glow);
+            }
+        }
+
+        h1 {
+            font-size: 1.6rem;
+            color: var(--gold);
             margin-bottom: 8px;
-            color: var(--text-white);
-        }
-
-        .product-desc {
-            font-size: 13px;
-            color: var(--text-muted);
-            line-height: 1.5;
-            margin-bottom: 20px;
-            min-height: 58px;
-        }
-
-        /* CTA Buttons */
-        .cta-btn {
-            width: 100%;
-            padding: 14px 18px;
-            background: linear-gradient(135deg, var(--emerald-accent) 0%, #059669 100%);
-            color: var(--text-white);
-            text-decoration: none;
             font-weight: 700;
-            font-size: 14px;
-            border-radius: 30px;
-            box-shadow: 0 8px 20px var(--emerald-glow);
+        }
+
+        p.bio {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 25px;
+            line-height: 1.5;
+        }
+
+        /* أقسام الخدمات */
+        .services-list {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .service-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 14px;
+            padding: 16px;
             transition: all 0.3s ease;
+            text-align: right;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .service-card:hover {
+            transform: translateY(-3px);
+            background: rgba(212, 175, 55, 0.08);
+            border-color: var(--gold);
+        }
+
+        .service-icon {
+            font-size: 1.5rem;
+            color: var(--gold);
+            width: 40px;
+            height: 40px;
+            background: rgba(212, 175, 55, 0.1);
+            border-radius: 10px;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 8px;
         }
 
-        .cta-btn:hover {
-            background: linear-gradient(135deg, #38E0A3 0%, #047857 100%);
-            box-shadow: 0 12px 25px rgba(52, 211, 153, 0.5);
-        }
-
-        .cta-btn-gold {
-            background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%);
-            box-shadow: 0 8px 20px var(--gold-glow);
-        }
-
-        .cta-btn-gold:hover {
-            background: linear-gradient(135deg, #FBBF24 0%, #B45309 100%);
-            box-shadow: 0 12px 25px rgba(245, 158, 11, 0.6);
-        }
-
-        /* Security & Payment Section */
-        .security-section {
-            width: 100%;
-            max-width: 1100px;
-            margin-top: 55px;
-            padding: 30px 20px;
-            background: rgba(21, 31, 50, 0.6);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            backdrop-filter: blur(10px);
-        }
-
-        .guarantee-box {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            margin-bottom: 20px;
-            text-align: left;
-            max-width: 600px;
-        }
-
-        .guarantee-icon {
-            font-size: 42px;
-            color: var(--gold-primary);
-        }
-
-        .guarantee-text h4 {
-            font-size: 16px;
-            color: var(--text-white);
+        .service-info h3 {
+            font-size: 1rem;
+            color: var(--text-light);
             margin-bottom: 4px;
         }
 
-        .guarantee-text p {
-            font-size: 12px;
+        .service-info p {
+            font-size: 0.82rem;
             color: var(--text-muted);
-            line-height: 1.4;
         }
 
-        .payment-icons {
+        /* أزرار التواصل المباشر */
+        .cta-button {
             display: flex;
-            flex-wrap: wrap;
+            align-items: center;
             justify-content: center;
-            align-items: center;
-            gap: 18px;
-            font-size: 28px;
-            color: #CBD5E1;
-            margin-top: 10px;
-            padding-top: 15px;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
-            width: 100%;
-        }
-
-        .payment-icons span {
-            font-size: 12px;
-            color: var(--emerald-accent);
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-        }
-
-        /* WhatsApp Button */
-        .whatsapp-float {
-            position: fixed;
-            bottom: 25px;
-            right: 25px;
-            width: 60px;
-            height: 60px;
-            background-color: #25D366;
-            color: #FFF;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 30px;
-            box-shadow: 0 10px 25px rgba(37, 211, 102, 0.5);
-            z-index: 1000;
+            gap: 10px;
+            background: #25D366;
+            color: #fff;
             text-decoration: none;
-            transition: transform 0.3s ease;
-            animation: pulseWa 2s infinite;
+            padding: 14px;
+            border-radius: 12px;
+            font-weight: bold;
+            font-size: 1rem;
+            transition: 0.3s;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+            margin-bottom: 20px;
         }
 
-        .whatsapp-float:hover {
-            transform: scale(1.1);
+        .cta-button:hover {
+            background: #20ba5a;
+            transform: scale(1.02);
         }
 
-        @keyframes pulseWa {
-            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
-            70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .social-btn {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-size: 1.2rem;
+            transition: 0.3s;
+        }
+
+        .social-btn:hover {
+            color: var(--gold);
+            border-color: var(--gold);
+            background: rgba(212, 175, 55, 0.1);
+            transform: translateY(-2px);
         }
 
         footer {
-            margin-top: 40px;
-            text-align: center;
-            padding: 20px;
-            width: 100%;
-            max-width: 1100px;
-            font-size: 13px;
+            margin-top: 25px;
+            font-size: 0.75rem;
             color: var(--text-muted);
         }
     </style>
 </head>
 <body>
 
-    <!-- Animated Background -->
-    <div class="animated-bg">
-        <div class="orb orb-1"></div>
-        <div class="orb orb-2"></div>
-        <div class="orb orb-3"></div>
+    <div class="container">
+        <!-- الصورة الشخصية في المنتصف بالأعلى مع الدائرة الذهبية المتوهجة -->
+        <div class="profile-wrapper">
+            <div class="glow-circle"></div>
+            <img src="https://i.ibb.co/M5Ds0FNK/t-a-f-007-20261016-101616.jpg" alt="توفيق الجويحي" class="profile-img">
+        </div>
+
+        <h1>توفيق الجويحي</h1>
+        <p class="bio">خدمات تجارية وتطوير رقمي متكامل | حلول الجملة وتصميم البروفايلات والمواقع</p>
+
+        <!-- أزرار التواصل المباشر (واتساب) -->
+        <a href="https://wa.me/967784074871" target="_blank" class="cta-button">
+            <i class="fa-brands fa-whatsapp"></i> تواصل مباشر عبر واتساب
+        </a>
+
+        <!-- أقسام الخدمات الثلاثة -->
+        <div class="services-list">
+            <div class="service-card">
+                <div class="service-icon"><i class="fa-solid fa-bolt"></i></div>
+                <div class="service-info">
+                    <h3>منتجات الكهرباء والطاقة (جملة)</h3>
+                    <p>توريد مستلزمات الكهرباء وأنظمة الطاقة بجودة عالية وأسعار منافسة.</p>
+                </div>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon"><i class="fa-solid fa-shirt"></i></div>
+                <div class="service-info">
+                    <h3>ملابس نسائية وأطفال</h3>
+                    <p>أحدث التشكيلات والأزياء العصرية لتلبية احتياجات كافة الأذواق.</p>
+                </div>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon"><i class="fa-solid fa-code"></i></div>
+                <div class="service-info">
+                    <h3>تصميم المواقع والبروفايلات</h3>
+                    <p>إنشاء مواقع إلكترونية احترافية وبروفايلات تعريفية مميزة للشركات والأفراد.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- حسابات التواصل الاجتماعي -->
+        <div class="social-links">
+            <a href="https://tiktok.com/@tawfik007007" target="_blank" class="social-btn" title="TikTok">
+                <i class="fa-brands fa-tiktok"></i>
+            </a>
+            <a href="https://instagram.com/algwoaihi" target="_blank" class="social-btn" title="Instagram">
+                <i class="fa-brands fa-instagram"></i>
+            </a>
+        </div>
+
+        <footer>
+            &copy; 2026 جميع الحقوق محفوظة - توفيق الجويحي
+        </footer>
     </div>
-
-    <!-- Header & Logo -->
-    <header>
-        <div class="logo-box">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800" width="100%" height="100%">
-              <defs>
-                <linearGradient id="emeraldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" stop-color="#34D399" />
-                  <stop offset="100%" stop-color="#059669" />
-                </linearGradient>
-                <linearGradient id="accentGrad" x1="0%" y1="100%" x2="100%" y2="0%">
-                  <stop offset="0%" stop-color="#A3E635" />
-                  <stop offset="100%" stop-color="#34D399" />
-                </linearGradient>
-              </defs>
-              <rect width="800" height="800" fill="#0B1120" rx="160" />
-              <g transform="translate(0, 20)">
-                <path d="M 310 230 L 385 430 C 388 438, 394 442, 400 442 C 406 442, 412 438, 415 430 L 490 230 C 493 222, 487 214, 478 214 L 442 214 C 436 214, 431 218, 429 224 L 400 325 L 371 224 C 369 218, 364 214, 358 214 L 322 214 C 313 214, 307 222, 310 230 Z" fill="url(#emeraldGrad)" />
-                <path d="M 430 220 C 430 220, 480 200, 500 240 C 515 270, 485 310, 445 305 C 435 303, 425 295, 425 295 C 425 295, 450 280, 455 255 C 460 230, 430 220, 430 220 Z" fill="url(#accentGrad)" />
-              </g>
-              <text x="400" y="560" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="68" fill="#FFFFFF" text-anchor="middle" letter-spacing="4">VITAL<tspan fill="#34D399" font-weight="300">EDIT</tspan></text>
-            </svg>
-        </div>
-        
-        <div class="trust-banner">
-            <i class="fa-solid fa-shield-halved"></i> Verified Official Affiliate Selections
-        </div>
-    </header>
-
-    <h1 class="section-title">Top Handpicked Winning Products</h1>
-    <p class="section-subtitle">Curated high-converting solutions with guaranteed official discounts.</p>
-    <!-- Products Grid -->
-    <div class="products-grid">
-
-        <!-- Product 1 -->
-        <div class="product-card">
-            <div class="price-star">
-                <span class="old-price">$149</span>
-                <span class="new-price">$49</span>
-            </div>
-            <span class="badge">#1 Best Seller</span>
-            <div class="img-container">
-                <img src="https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=300" alt="LivPure Natural Vitality" class="product-img">
-            </div>
-            <h3 class="product-title">LivPure Natural Vitality</h3>
-            <p class="product-desc">Advanced natural liver & fat-burning formula for sustained daily energy and weight management.</p>
-            <a href="ضع_رابط_كليك_بنك_1" target="_blank" class="cta-btn cta-btn-gold">
-                Claim Official Discount <i class="fa-solid fa-arrow-right"></i>
-            </a>
-        </div>
-
-        <!-- Product 2 -->
-        <div class="product-card">
-            <div class="price-star">
-                <span class="old-price">$97</span>
-                <span class="new-price">$37</span>
-            </div>
-            <div class="img-container">
-                <img src="https://images.unsplash.com/photo-1553530666-ba11a7da3888?w=300" alt="Smoothie Diet" class="product-img">
-            </div>
-            <h3 class="product-title">The 21-Day Smoothie Plan</h3>
-            <p class="product-desc">Delicious, rapid weight loss smoothie transformation guide. Easy-to-make recipes for everyday energy.</p>
-            <a href="ضع_رابط_كليك_بنك_2" target="_blank" class="cta-btn">
-                Get Instant Access <i class="fa-solid fa-arrow-right"></i>
-            </a>
-        </div>
-
-        <!-- Product 3 -->
-        <div class="product-card">
-            <div class="price-star">
-                <span class="old-price">$127</span>
-                <span class="new-price">$47</span>
-            </div>
-            <div class="img-container">
-                <img src="https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?w=300" alt="His Secret Obsession" class="product-img">
-            </div>
-            <h3 class="product-title">His Secret Obsession</h3>
-            <p class="product-desc">#1 rated relationship guide unlocking deep emotional connections & mutual understanding.</p>
-            <a href="ضع_رابط_كليك_بنك_3" target="_blank" class="cta-btn">
-                Unlock Official Guide <i class="fa-solid fa-arrow-right"></i>
-            </a>
-        </div>
-
-        <!-- Product 4 -->
-        <div class="product-card">
-            <div class="price-star">
-                <span class="old-price">$60</span>
-                <span class="new-price">$29</span>
-            </div>
-            <div class="img-container">
-                <img src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=300" alt="Soulmate Sketch" class="product-img">
-            </div>
-            <h3 class="product-title">Soulmate Psychic Sketch</h3>
-            <p class="product-desc">Discover your soulmate's visual portrait and personality traits through viral customized readings.</p>
-            <a href="ضع_رابط_كليك_بنك_4" target="_blank" class="cta-btn">
-                Get Your Sketch Now <i class="fa-solid fa-arrow-right"></i>
-            </a>
-        </div>
-
-        <!-- Product 5 -->
-        <div class="product-card">
-            <div class="price-star">
-                <span class="old-price">$199</span>
-                <span class="new-price">$59</span>
-            </div>
-            <div class="img-container">
-                <img src="https://images.unsplash.com/photo-1512069772995-ec65ed45afd6?w=300" alt="Puravive" class="product-img">
-            </div>
-            <h3 class="product-title">Puravive Exotic Formula</h3>
-            <p class="product-desc">Exotic rice method designed to boost metabolic rate and optimize calorie burning naturally.</p>
-            <a href="ضع_رابط_كليك_بنك_5" target="_blank" class="cta-btn">
-                Shop Official Offer <i class="fa-solid fa-arrow-right"></i>
-            </a>
-        </div>
-
-        <!-- Product 6 -->
-        <div class="product-card">
-            <div class="price-star">
-                <span class="old-price">$80</span>
-                <span class="new-price">$39</span>
-            </div>
-            <div class="img-container">
-                <img src="https://images.unsplash.com/photo-1499209974431-9dac3d5f9788?w=300" alt="Custom Keto Meal Plan" class="product-img">
-            </div>
-            <h3 class="product-title">Custom Keto Meal Plan</h3>
-            <p class="product-desc">Tailored nutrition plan specifically engineered for your body type, goals, and food preferences.</p>
-            <a href="ضع_رابط_كليك_بنك_6" target="_blank" class="cta-btn">
-                Start Custom Plan <i class="fa-solid fa-arrow-right"></i>
-            </a>
-        </div>
-
-    </div>
-
-    <!-- Security & Guarantees Section -->
-    <div class="security-section">
-        <div class="guarantee-box">
-            <i class="fa-solid fa-award guarantee-icon"></i>
-            <div class="guarantee-text">
-                <h4>60-Day 100% Money-Back Guarantee</h4>
-                <p>All recommended vendor products are backed by an official full refund guarantee via ClickBank secure processing. Zero risk involved.</p>
-            </div>
-        </div>
-
-        <div class="payment-icons">
-            <span><i class="fa-solid fa-lock"></i> 256-Bit SSL Encrypted</span>
-            <i class="fa-brands fa-cc-visa" title="Visa"></i>
-            <i class="fa-brands fa-cc-mastercard" title="Mastercard"></i>
-            <i class="fa-brands fa-cc-amex" title="American Express"></i>
-            <i class="fa-brands fa-cc-paypal" title="PayPal"></i>
-            <i class="fa-brands fa-cc-discover" title="Discover"></i>
-        </div>
-    </div>
-
-    <!-- Floating WhatsApp Button -->
-    <a href="https://wa.me/967784074871?text=Hello%20VitalEdit,%20I%20have%20a%20question%20about%20the%20products" class="whatsapp-float" target="_blank" title="Contact Us on WhatsApp">
-        <i class="fa-brands fa-whatsapp"></i>
-    </a>
-
-    <!-- Footer -->
-    <footer>
-        <p>&copy; 2026 VitalEdit. جميع الحقوق محفوظة لدينا.</p>
-        <p style="margin-top: 5px; opacity: 0.6; font-size: 11px;">Disclaimer: VitalEdit independently reviews products. When purchasing through our referral links, we may earn an affiliate commission from official vendor checkouts.</p>
-    </footer>
 
 </body>
 </html>
