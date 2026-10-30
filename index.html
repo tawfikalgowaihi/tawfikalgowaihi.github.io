@@ -10,7 +10,7 @@
 </head>
 <body>
 
-    <!-- الهيدر مع الشعار الذهبي المفرغ المكبر والمتوهج -->
+    <!-- الهيدر مع الشعار الذهبي المفرغ المتوهج -->
     <header>
         <div class="brand-logo">
             <div class="glowing-circle-badge">
@@ -27,12 +27,12 @@
     <!-- بنر الواجهة الرئيسي -->
     <div class="store-banner-wrapper">
         <div class="store-banner-container">
-            <img src="https://i.ibb.co/Kp9SzZYB/1777197412902.png" alt="متجر القفل - توفيق" class="store-banner-img">
+            <img src="https://i.ibb.co/Kp9SzZYB/1777197412902.png" alt="متجر القفل" class="store-banner-img">
         </div>
     </div>
 
     <div class="container">
-        <!-- شريط التصنيفات الستة -->
+        <!-- شريط التصنيفات -->
         <div class="category-scroll">
             <button class="cat-btn active" onclick="filterCategory('ملابس نسائية', this)">ملابس نسائية</button>
             <button class="cat-btn" onclick="filterCategory('ملابس اطفال', this)">ملابس اطفال</button>
@@ -42,9 +42,9 @@
             <button class="cat-btn" onclick="filterCategory('اكسسورات', this)">اكسسورات</button>
         </div>
 
-        <!-- شبكة المنتجات الاحترافية المدمجة (عمودين في الجوال لتظهر 4 منتجات بشكل مرتب) -->
+        <!-- شبكة المنتجات -->
         <div class="products-grid" id="productsGrid">
-            <!-- يتم تحميل المنتجات ديناميكياً عبر الجافاسكريبت -->
+            <!-- يتم تحميل المنتجات ديناميكياً -->
         </div>
     </div>
 
@@ -60,7 +60,7 @@
         </button>
     </div>
 
-    <!-- نافذة السلة Modal -->
+    <!-- نافذة السلة والدفع Modal -->
     <div class="modal-overlay" id="cartModal">
         <div class="modal-card">
             <div class="modal-header">
@@ -68,20 +68,19 @@
                 <button class="close-modal-btn" onclick="closeCartModal()">&times;</button>
             </div>
             <div class="modal-body">
-                <div id="cartItemsList">
-                    <!-- عناصر السلة تُعرض هنا -->
-                </div>
+                <div id="cartItemsList"></div>
 
                 <div class="payment-section">
-                    <label for="paymentMethod"><i class="fa-solid fa-wallet"></i> اختر طريقة الدفع المفضل لديك:</label>
+                    <label for="paymentMethod"><i class="fa-solid fa-wallet"></i> اختر طريقة الدفع المعتمدة:</label>
                     <select id="paymentMethod" class="payment-select">
-                        <option value="ام فلوس (Am Flous)">أم فلوس (Am Flous)</option>
-                        <option value="بنك الكريمي (Kuraimi Bank)">بنك الكريمي (الكريمي جوال)</option>
-                        <option value="الحوالات النقدية (Express/Kuraimi)">شبكة الحوالات المحلية</option>
+                        <option value="بنك الكريمي (الكريمي جوال)">بنك الكريمي (الكريمي جوال)</option>
+                        <option value="محفظة أم فلوس (Am Flous)">أم فلوس (Am Flous)</option>
+                        <option value="بنك بن دول (Bin Dowal Bank)">بنك بن دول (Bin Dowal)</option>
+                        <option value="شركة العمقي للصرافة (Al-Amqi)">العمقي للصرافة (حوالة)</option>
                         <option value="الدفع عند الاستلام">الدفع عند الاستلام</option>
                     </select>
 
-                    <textarea id="customerNotes" class="customer-notes" placeholder="ملاحظات الطلب، العنوان بالتفصيل، أو رقم الشارع..." rows="3"></textarea>
+                    <textarea id="customerNotes" class="customer-notes" placeholder="ملاحظات الطلب أو العنوان بالتفصيل..." rows="3"></textarea>
 
                     <button class="send-whatsapp-btn" onclick="sendToWhatsApp()">
                         <i class="fa-brands fa-whatsapp"></i>
@@ -92,34 +91,38 @@
         </div>
     </div>
 
-    <!-- الفوتر (Footer) -->
+    <!-- الفوتر الاحترافي -->
     <footer class="main-footer">
         <div class="footer-grid">
-            <div class="footer-col">
-                <h3>عن القفل ستوري</h3>
-                <p>وجهتك الأولى للتسوق الذكي. نلبي احتياجات الأسرة والعائلة بأفضل المنتجات وأرقى المعايير مع خدمة التوصيل السريع والدفع الآمن.</p>
-            </div>
-            <div class="footer-col">
-                <h3>روابط سريعة</h3>
-                <ul class="footer-links">
-                    <li><a href="#" onclick="filterCategory('ملابس نسائية', document.querySelector('.cat-btn')); return false;">ملابس نسائية</a></li>
-                    <li><a href="#" onclick="filterCategory('العناية بالجسم', document.querySelectorAll('.cat-btn')[2]); return false;">العناية بالجسم</a></li>
-                    <li><a href="#" onclick="filterCategory('عطور فاخره', document.querySelectorAll('.cat-btn')[4]); return false;">عطور فاخرة</a></li>
-                    <li><a href="#" onclick="openCartModal(); return false;">سلة المشتريات</a></li>
-                </ul>
-            </div>
-            <div class="footer-col footer-south-container">
-                <img src="https://i.postimg.cc/Tw43Dc4n/1000004822-removebg-preview.png" alt="شعار المتجر" class="footer-south-img">
+            <div class="footer-col brand-info-col">
+                <div class="footer-logo-wrap">
+                    <img src="https://i.postimg.cc/Tw43Dc4n/1000004822-removebg-preview.png" alt="شعار القفل ستوري" class="footer-logo-img">
+                </div>
+                <h3>القفل ستوري</h3>
+                <p>وجهتك الأولى للتسوق الذكي. نلبي احتياجات الأسرة بأعلى معايير الجودة وسرعة التوصيل.</p>
                 <a href="https://wa.me/967739572620" target="_blank" class="gold-whatsapp-btn">
-                    <i class="fa-brands fa-whatsapp"></i> تواصل مع الإدارة
+                    <i class="fa-brands fa-whatsapp"></i> خدمة العملاء
                 </a>
             </div>
+
+            <div class="footer-col">
+                <h3>طرق الدفع المحلية المعتمدة</h3>
+                <div class="payment-badges-grid">
+                    <div class="pay-badge"><i class="fa-solid fa-building-columns"></i> بنك الكريمي</div>
+                    <div class="pay-badge"><i class="fa-solid fa-mobile-screen"></i> أم فلوس</div>
+                    <div class="pay-badge"><i class="fa-solid fa-money-bill-transfer"></i> بنك بن دول</div>
+                    <div class="pay-badge"><i class="fa-solid fa-wallet"></i> العمقي للصرافة</div>
+                </div>
+            </div>
         </div>
+
         <div class="bottom-copyright">
-            جميع الحقوق محفوظة © 2026 <span class="designer-tag">القفل ستوري</span> | تصميم وتطوير المتجر الذكي
+            جميع الحقوق محفوظة © 2026 <span class="designer-tag">القفل ستوري</span>
         </div>
     </footer>
 
+    <!-- ربط ملف المنتجات أولاً ثم ملف التشغيل -->
+    <script src="products.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
